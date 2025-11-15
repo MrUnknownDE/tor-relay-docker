@@ -1,13 +1,16 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.21
+FROM ghcr.io/linuxserver/baseimage-alpine:3.22
 
-LABEL maintainer "Nicolas Coutin <ilshidur@gmail.com>"
+LABEL org.opencontainers.image.title="tor-relay" \
+      org.opencontainers.image.description="Tor relay on Linuxserver.io Alpine base image" \
+      org.opencontainers.image.authors="Nicolas Coutin <ilshidur@gmail.com>" \
+      org.opencontainers.image.licenses="MIT"
 
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV XDG_DATA_HOME="/config" \
 XDG_CONFIG_HOME="/config"
 ENV TZ America/Los_Angeles
 
-RUN apk --no-cache add bash tzdata tor=0.4.8.14-r1
+RUN apk --no-cache add bash tzdata tor
 
 EXPOSE 9001 9030
 
